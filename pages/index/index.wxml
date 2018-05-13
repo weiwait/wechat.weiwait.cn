@@ -1,2 +1,10 @@
 <!--pages/index/index.wxml-->
-<view>{{msg}}</view>
+
+<swiper id="banner" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{baseDir + item}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>

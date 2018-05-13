@@ -5,14 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg: 'hello'
+    msg: 'hello',
+    baseDir: 'https://wechat.weiwait.cn/',
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.request({
+      url: this.data.baseDir + 'pictures',
+      success: data => {
+        this.setData({imgUrls: data.data});
+        console.log(data.data[0]);
+      }
+    })
   },
 
   /**
