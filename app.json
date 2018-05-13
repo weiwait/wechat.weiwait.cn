@@ -1,32 +1,32 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/logs/logs"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "彩票",
-        "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-      "color": "black",
-      "selectedColor": "green",
-      "borderStyle": "white",
-      "list": [
-        {
-          "selectedIconPath": "images/information-red.png",
-          "iconPath": "images/trophy-red.png",
-          "pagePath": "pages/index/index",
-          "text": "资讯"
-        },
-        {
-          "selectedIconPath": "images/trophy-gray.png",
-          "iconPath": "images/information-gray.png",
-          "pagePath": "pages/logs/logs",
-          "text": "开奖"
-        }
-      ]
-    }
-    
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/content/content"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "彩票",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "green",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/information-red.png",
+        "iconPath": "images/trophy-red.png",
+        "pagePath": "pages/index/index",
+        "text": "资讯"
+      },
+      {
+        "selectedIconPath": "images/trophy-gray.png",
+        "iconPath": "images/information-gray.png",
+        "pagePath": "pages/logs/logs",
+        "text": "开奖"
+      }
+    ]
+  }
 }

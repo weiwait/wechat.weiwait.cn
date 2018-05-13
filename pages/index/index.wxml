@@ -8,3 +8,11 @@
     </swiper-item>
   </block>
 </swiper>
+
+<view>
+  <navigator url="/pages/content/content?index=1" class="nav-list">
+  <image src="/images/download.jpg"></image>
+  <text>安卓用户扫码下载，注册送19元豪礼\n</text>
+  <text>2018-5-14 0:38:12</text>
+  </navigator>
+</view>
