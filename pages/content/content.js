@@ -1,4 +1,5 @@
 // pages/content/content.js
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.index);
+    var that = this;
+    var article = `<h1>hello world</h1>`;
+    WxParse.wxParse('article', 'html', article, that, 5);
   },
 
   /**
