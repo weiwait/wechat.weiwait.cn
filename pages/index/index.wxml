@@ -4,15 +4,19 @@
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
-      <image src="{{baseDir + item}}" class="slide-image"/>
+      <navigator url="/pages/content/content?index={{item.id}}&api=getContent">
+        <image src="{{baseDir + item.image}}" class="slide-image"/>
+      </navigator>
     </swiper-item>
   </block>
 </swiper>
 
 <view>
-  <navigator url="/pages/content/content?index=1" class="nav-list">
-  <image src="/images/download.jpg"></image>
-  <text>安卓用户扫码下载，注册送19元豪礼\n</text>
-  <text>2018-5-14 0:38:12</text>
-  </navigator>
+  <block wx:for="{{lists}}">
+    <navigator url="/pages/content/content?index={{item.id}}&api=getContent2" class="nav-list">
+    <image src="{{baseDir + item.image}}"></image>
+    <text>{{item.title}}\n</text>
+    <text>{{item.created_at}}</text>
+    </navigator>
+  </block>
 </view>

@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg: 'hello',
     baseDir: 'https://wechat.weiwait.cn/',
     indicatorDots: true,
     autoplay: true,
@@ -21,7 +20,13 @@ Page({
       url: this.data.baseDir + 'pictures',
       success: data => {
         this.setData({imgUrls: data.data});
-        console.log(data.data[0]);
+      }
+    });
+
+    wx.request({
+      url: this.data.baseDir + 'list',
+      success: data => {
+        this.setData({lists: data.data});
       }
     })
   },

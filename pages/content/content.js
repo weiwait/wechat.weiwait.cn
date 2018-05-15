@@ -6,16 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    baseDir: 'https://wechat.weiwait.cn/'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    var article = `<h1>hello world</h1>`;
-    WxParse.wxParse('article', 'html', article, that, 5);
+    wx.request({
+      url: this.data.baseDir + options.api + '/' + options.index,
+      success: result => {
+        var that = this;
+        var article = result.data.data.content;
+        WxParse.wxParse('article', 'html', article, that, 5);
+      }
+    })
   },
 
   /**
