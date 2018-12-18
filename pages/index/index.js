@@ -17,33 +17,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let obj = this;
-    // wx.request({
-    //   url: this.data.baseDir + 'pictures',
-    //   success: data => {
-    //     this.setData({imgUrls: data.data});
-    //   }
-    // });
+    wx.request({
+      url: this.data.baseDir + 'pictures',
+      success: data => {
+        this.setData({imgUrls: data.data});
+      }
+    });
 
-    // wx.request({
-    //   url: this.data.baseDir + 'list',
-    //   success: data => {
-    //     this.setData({lists: data.data});
-    //   }
-    // })
+    wx.request({
+      url: this.data.baseDir + 'list',
+      success: data => {
+        this.setData({lists: data.data});
+      }
+    })
 
       wx.login({
-        success(res) {
-          if(res.code) {
-            console.log(res.code);
+        success: loginResult => {
+          if (loginResult.code) {
             wx.request({
-              url: obj.data.baseDir + 'api/login',
+              url: this.data.baseDir + 'api/login',
               method: 'POST',
               data: {
-                code: res.code
+                code: loginResult.code
               },
               success: data => {
-                obj.data.access_token = data.access_token
+                this.data.access_token = data.data.access_token;
+                wx.request({
+                  url: this.data.baseDir + 'api/test',
+                  header: {
+                    Accept: 'application/json',
+                    Authorization: this.data.access_token
+                  },
+                  success: data => {
+                    console.log(data)
+                  }
+                })
               }
             })
           } else {
@@ -51,15 +59,12 @@ Page({
           }
         }
       })
-
-      console.log(this.data.access_token)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
