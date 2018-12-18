@@ -9,26 +9,50 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+    access_token: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: this.data.baseDir + 'pictures',
-      success: data => {
-        this.setData({imgUrls: data.data});
-      }
-    });
+    let obj = this;
+    // wx.request({
+    //   url: this.data.baseDir + 'pictures',
+    //   success: data => {
+    //     this.setData({imgUrls: data.data});
+    //   }
+    // });
 
-    wx.request({
-      url: this.data.baseDir + 'list',
-      success: data => {
-        this.setData({lists: data.data});
-      }
-    })
+    // wx.request({
+    //   url: this.data.baseDir + 'list',
+    //   success: data => {
+    //     this.setData({lists: data.data});
+    //   }
+    // })
+
+      wx.login({
+        success(res) {
+          if(res.code) {
+            console.log(res.code);
+            wx.request({
+              url: obj.data.baseDir + 'api/login',
+              method: 'POST',
+              data: {
+                code: res.code
+              },
+              success: data => {
+                obj.data.access_token = data.access_token
+              }
+            })
+          } else {
+            console.log('f')
+          }
+        }
+      })
+
+      console.log(this.data.access_token)
   },
 
   /**
